@@ -1,17 +1,13 @@
-import time
-
 import cv2
-import mediapipe as mp
 
-cap = cv2.VideoCapture(1)
-mpHands = mp.solution.hands   
-hands = mpHands.Hands()
+# Load an image from file
+image_path = 'cat.jpg'  
+image = cv2.imread(image_path, 1)
 
-while True:
-    success, img = cap.read()
-    imgRGB = cv2.Color(img, cv2.COLOR_BGR2RGB)
-    results = hands.process(imgRGB)
-
-    cv2.imshow("Image", img)
-    cv2.WaitKey(1)
-    
+if image is not None:
+    # Display the loaded image
+    cv2.imshow('Loaded Image', image)
+    cv2.waitKey(0)  # Wait for a key press to close the window
+    cv2.destroyAllWindows()  # Close all OpenCV windows
+else:
+    print("Image not loaded or invalid image path.")
